@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codex Nodes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top-bar">
+      <div>
+        <h1>Codex Nodes</h1>
+        <p class="subtitle">Dark-mode canvas for modeling ideas with draggable nodes and smart edges.</p>
+      </div>
+      <div class="toolbar">
+        <button id="add-node" class="primary">Add Node</button>
+        <button id="start-connection" class="ghost">Connect Nodes</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="canvas" id="canvas" aria-label="Graph canvas">
+        <div id="viewport" class="viewport">
+          <svg id="edge-layer" class="edge-layer" aria-label="Edges"></svg>
+          <div id="nodes-layer" class="nodes-layer" aria-live="polite"></div>
+        </div>
+        <div class="hint">Scroll to zoom • Drag background to pan • Drag nodes to move</div>
+      </section>
+
+      <aside class="property-panel" aria-label="Property panel">
+        <div class="panel-section" id="selection-info">
+          <h2>Selection</h2>
+          <p id="selection-summary">No node selected.</p>
+        </div>
+
+        <div class="panel-section" id="node-editor">
+          <h2>Node Properties</h2>
+          <form id="node-form">
+            <label>
+              Title
+              <input name="title" type="text" required />
+            </label>
+            <label>
+              Description
+              <textarea name="description" rows="2"></textarea>
+            </label>
+            <label>
+              Content
+              <textarea name="content" rows="3"></textarea>
+            </label>
+            <label>
+              Type
+              <select name="type"></select>
+            </label>
+            <label class="inline">
+              Node color
+              <input name="color" type="color" />
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="primary">Save</button>
+              <button type="button" id="delete-node" class="danger">Delete</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel-section" id="type-editor">
+          <h2>Types</h2>
+          <div id="types-list" class="types-list"></div>
+          <form id="type-form" class="stacked">
+            <label>
+              Name
+              <input name="name" type="text" required />
+            </label>
+            <label>
+              Description
+              <textarea name="description" rows="2" placeholder="Optional details" ></textarea>
+            </label>
+            <label class="inline">
+              Color
+              <input name="color" type="color" value="#5dd3ff" />
+            </label>
+            <button type="submit" class="ghost">Add Type</button>
+          </form>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
